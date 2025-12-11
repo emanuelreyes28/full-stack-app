@@ -1,0 +1,24 @@
+{
+  "buildCommand": "cd fav-links-react && npm install && npm run build",
+  "outputDirectory": "fav-links-react/dist",
+  "functions": {
+    "server/index.js": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/links(.*)",
+      "destination": "/server/index.js"
+    },
+    {
+      "source": "/test",
+      "destination": "/server/index.js"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/server/index.js"
+    }
+  ]
+}
+

@@ -41,8 +41,13 @@ app.get('/', (req,res) => {
 
 
 
-//starting express on port
-app.listen(PORT, () => {
-    console.log(`The app is running on port ${PORT}.`)
-})
+//starting express on port (only in development)
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`The app is running on port ${PORT}.`)
+    })
+}
+
+// Export for Vercel serverless function
+module.exports = app
 
